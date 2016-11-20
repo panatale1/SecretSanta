@@ -20,6 +20,4 @@ fi
 source $VENV_DIR/$VENV_NAME/bin/activate
 #echo $VIRTUAL_ENV
 sudo pip install --upgrade -r requirements
-django-admin startproject mysite
-cd mysite
-./manage.py runserver
+django-admin startproject secretsanta 
