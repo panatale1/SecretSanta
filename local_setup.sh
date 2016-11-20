@@ -17,7 +17,10 @@ if [[ wrapper_path != "" ]]; then
     fi 
 fi
 
+mkvirtualenv secretsanta
+workon secretsanta
 source $VENV_DIR/$VENV_NAME/bin/activate
 #echo $VIRTUAL_ENV
 sudo pip install --upgrade -r requirements
-django-admin startproject secretsanta 
+cd secretsanta
+bash manage.py migrate
