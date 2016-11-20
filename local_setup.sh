@@ -1,5 +1,5 @@
 #!/bin/bash
-VENV_NAME="django-ops"
+VENV_NAME="secretsanta"
 VENV_DIR="$HOME/.virtualenvs"
 
 mkdir -p $VENV_DIR
@@ -16,11 +16,12 @@ if [[ wrapper_path != "" ]]; then
         source "$wrapper_path"
     fi 
 fi
-
+source /usr/local/bin/virtualenvwrapper.sh
 mkvirtualenv secretsanta
-workon secretsanta
-source $VENV_DIR/$VENV_NAME/bin/activate
-#echo $VIRTUAL_ENV
+source $VENV_DIR/$VENV_NAME/bin/virtualenv_activate
+. virtualenv_activate.sh secretsanta
+echo $VIRTUAL_ENV
+#workon secretsanta
 sudo pip install --upgrade -r requirements
 cd secretsanta
-bash manage.py migrate
+./manage.py migrate
