@@ -21,7 +21,7 @@ mkvirtualenv secretsanta
 source $VENV_DIR/$VENV_NAME/bin/virtualenv_activate
 . virtualenv_activate.sh secretsanta
 echo $VIRTUAL_ENV
-#workon secretsanta
+workon secretsanta
 sudo pip install --upgrade -r requirements -t $VENV_DIR/$VENV_NAME
 cd $VENV_DIR/$VENV_HOME/secretsanta
 ./manage.py migrate
