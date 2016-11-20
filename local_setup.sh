@@ -17,11 +17,12 @@ if [[ wrapper_path != "" ]]; then
     fi 
 fi
 source /usr/local/bin/virtualenvwrapper.sh
-mkvirtualenv secretsanta
-source $VENV_DIR/$VENV_NAME/bin/virtualenv_activate
-. virtualenv_activate.sh secretsanta
-echo $VIRTUAL_ENV
-workon secretsanta
-sudo pip install --upgrade -r requirements -t $VENV_DIR/$VENV_NAME
-cd $VENV_DIR/$VENV_HOME/secretsanta
+if [[ ! -e $VENV_DIR/$VENV_NAME ]]; then
+	mkvirtualenv secretsanta
+fi
+if [[ -z $(echo $VIRTUAL_ENV) ]]; then
+	workon secretsanta
+fi
+pip install --upgrade -r requirements 
+cd secretsanta
 ./manage.py migrate
